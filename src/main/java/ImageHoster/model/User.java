@@ -1,12 +1,34 @@
 package ImageHoster.model;
 
+import javax.persistence.*;
 
+//Write the annotation to specify that the corresponding class is a JPA entity
+
+//Write the annotation to provide more options to customize the mapping, explicitly mentioning that the name of the table in the database is 'users'
 public class User {
 
+    //Write the annotation to specify that the corresponding attribute is a primary key
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    //Write the annotation to specify that the attribute will be mapped to the column in the database.
+    //Also explicitly mention the column name as 'id'
     private Integer id;
+
+    //Write the annotation to specify that the attribute will be mapped to the column in the database.
+    //Also explicitly mention the column name as 'username'
     private String username;
+
+    //Write the annotation to specify that the attribute will be mapped to the column in the database.
+    //Also explicitly mention the column name as 'password'
     private String password;
+
+    //Write the annotation to specify the below mentioned features
+    //The 'users' table is mapped to 'user_profile' table with One:One mapping
+    //Also if a record in 'user_profile' table is deleted or updated, then all the records in 'users' table associated to that particular record in 'user_profile' table will be deleted or updated  first and then the record in the 'user_profile' table will be deleted or updated
+    //FetchType is EAGER
+
+    //Write the annotation to indicate that the name of the column in 'users' table referring the primary key in 'user_profile' table will be 'profile_id'
     private UserProfile profile;
+
 
     public Integer getId() {
         return id;
